@@ -4,6 +4,7 @@ function getOrders(req, res) {
     pool.query("SELECT * FROM orders",(error, result) => {
       //console.log(result.rows);
       if (error) {
+        console.log(error);
         return res.status(500).send("Internal Error on server");
       } else {
         return res.status(200).send(result.rows);
