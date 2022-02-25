@@ -4,10 +4,12 @@ const app = express();
 //app will create a web server
 const reqi = require('express/lib/request');
 const orderRoute = require("./routes/order");
+const productsRoute = require("./routes/products/products");
 
 app.use(express.json());
 //For orders
 app.use("/api/clothing/auth",orderRoute);
+app.use("/api/clothing/auth",productsRoute);
 
 
 
