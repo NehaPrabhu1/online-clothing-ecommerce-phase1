@@ -71,7 +71,7 @@ function getOrders(req, res) {
   function insertOrderline(req,res){
     const id = parseInt(req.params.id);
       const {productid, size, quantiy, price} = req.body;
-      poo
+      pool.query('insert into orderline')
 
   }
   function updateOrderAmount(){

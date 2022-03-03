@@ -4,9 +4,8 @@ CREATE EXTENSION pgcrypto;
   
 create table login_details(userid int, password varchar(300),foreign key (userid) references users(userid));  
  
-create table categories( categoryid serial primary key,category_gender varchar(10),  
- 
-category_type varchar(10), category_name varchar(20) ); 
+create table categories( categoryid serial primary key,category_gender varchar(10), category_type varchar(10), category_name varchar(20) ); 
+
 create table brands(brandid serial primary key, brand_name varchar(20)); 
  
 create table products(productid serial primary key, categoryid int, brandid int, product_name varchar (30), size_quantity json, price int, color varchar (10), discount int default 0, product_image varchar(100), foreign key (categoryid) references  categories(categoryid),foreign key (brandid) references brands(brandid) ); 

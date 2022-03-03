@@ -9,6 +9,8 @@ const productsRoute = require("./routes/products/products");
 app.use(express.json());
 //For orders
 app.use("/api/clothing/auth",orderRoute);
+
+//For products
 app.use("/api/clothing/auth",productsRoute);
 
 
