@@ -1,42 +1,27 @@
-const express = require('express');
+const express = require("express");
 const app = express();
-
-//app will create a web server
-const reqi = require('express/lib/request');
+const userRoute = require("./routes/user");
+const authRoute = require("./routes/auth");
 const orderRoute = require("./routes/order");
-const productsRoute = require("./routes/products/products");
-const bodyParser = require('body-parser');
-//const cors = require('cors');
-//app.use(cors);
+const deliveryRoute = require("./routes/delivery");
+const productRoute = require("./routes/product");
+const dotenv = require("dotenv");
+const cors = require("cors");
+
+dotenv.config();
+app.use(cors());
+app.get("/api/test",()=>{
+    console.log("Test is successful");
+})
 
 app.use(express.json());
-//For orders
-app.use("/api/clothing/auth",orderRoute);
-
-//For products
-app.use("/api/clothing/auth",productsRoute);
-
-// for every incoming request, bodyParser will parse data from bytes into JSON object &
-// vice-versa for every reponse JSON into bytes
-// Will work with POST and PUT/PATCH
-app.use(bodyParser.json());
+app.use("/api/user",userRoute);
+app.use("/api/user/auth",authRoute);
+app.use("/api/user/orderpage",orderRoute);
+app.use("/api/user/order",deliveryRoute);
+app.use("/api/clothing/auth",productRoute);
 
 
-// middleaware - to enable cors at server-side
-var allowCrossDomain = function (req, res, next) {
-    res.header('Access-Control-Allow-Origin', '*');
-    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Accept Content-Type');
-    req.header('Access-Control-Allow-Origin', '*');
-    req.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-    req.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Accept Content-Type');
-
-    next();
-}
-
-
-
-const port = 3000;
-app.listen(port, function () {
-    console.log("Web server started successfully");
-});
+app.listen(3000, ()=>{
+    console.log("Backend Server is running...");
+})

@@ -1,0 +1,16 @@
+<div class="row row-cols-1 row-cols-md-3 g-3">
+    <div *ngFor="let product of products"  class="col">
+        <br>
+        <div  class="card mb-4 shadow-sm p-3 mb-5 bg-white rounded" style="width: 18rem;">
+            <a [routerLink]="['/apparel',product.productid]">
+                <img src="{{product.product_image}}" class="card-img-top border" alt="{{product.color+' '+product.product_name}}">
+            </a>
+                <div class="card-body">
+                <h5 class="card-title">{{product.product_name}}</h5>
+                <p class="card-text">Price: {{product.price|currency:'INR'}}.
+                    <br>Color: {{product.color}} <br> Brand: {{product.brandid}}</p>
+            </div>
+        </div>
+    </div>
+</div>
+

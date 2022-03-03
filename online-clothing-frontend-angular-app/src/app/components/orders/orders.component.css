@@ -1,0 +1,21 @@
+.cart {
+  /*display: flex;*/
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  height: 100px;
+  padding: 10px;
+}
+.cart:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.12), 0 4px 8px rgba(0, 0, 0, 0.06);
+}
+.id {
+  flex: 1;
+}
+.date {
+  flex: 1;
+}
+.amount {
+  flex: 1;
+}

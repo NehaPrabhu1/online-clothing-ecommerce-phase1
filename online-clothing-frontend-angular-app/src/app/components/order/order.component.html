@@ -1,0 +1,51 @@
+<ng-container>
+    <br>
+    <div class="address">
+        <div class="d-flex" *ngFor="let add of delAdd">
+            <b>Delivery Address: &nbsp;</b>
+            <address>
+                {{add.addressline}}, {{add.street}}, {{add.city}}, {{add.country}} - {{add.pincode}}
+            </address>
+        </div>
+
+    </div>
+    <div class="row" *ngFor="let orderline of orderlines; let i = index">
+        <div class="card p-2 cart border shadow-sm p-3 mb-5 bg-white rounded">
+        <div class="row">
+            <div class="col-6">
+                <div class="image">
+                   <img class="border border-dark" 
+                   src="{{orderline.product_image}}" alt="img" 
+                   style="height:200px;width:200px;">
+
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="name">
+                    <b>Product name: </b>{{orderline.product_name}}&nbsp;
+                </div>
+                <div class="brand">
+                    <b>Brand name: </b>{{orderline.brand_name}}&nbsp;
+                </div>
+                <div class="size">
+                    <b>Size: </b>{{orderline.size | uppercase}}&nbsp;
+                </div>
+                <div class="quantity">
+                    <b>Quantity: </b>{{orderline.quantity}}
+                </div>
+                <div class="price">
+                    <b>Price: </b>{{orderline.price}}
+                </div>
+                <br>
+                <div>
+                    <button class="btn btn-danger text-white">Review</button>
+                </div>
+            </div>
+
+        </div>
+            
+        
+    </div>
+</div>
+
+</ng-container>

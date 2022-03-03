@@ -1,21 +1,22 @@
 {
-  "name": "online-clothing-backend-nodejs-app",
+  "name": "demo-nodejs-app",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon src/index.js"
   },
-  "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "body-parser": "^1.19.2",
     "cors": "^2.8.5",
-    "elasticsearch": "^16.7.3",
+    "dotenv": "^16.0.0",
     "express": "^4.17.3",
+    "jsonwebtoken": "^8.5.1",
+    "moment": "^2.29.1",
     "nodemon": "^2.0.15",
-    "pg": "^8.7.3"
+    "pg": "^8.7.3",
+    "pg-format": "^1.0.4"
   }
 }

@@ -1,0 +1,20 @@
+<ng-container *ngIf="orders.length >0">
+    <br>
+    <div class="row" *ngFor="let order of orders; let i = index">
+        <a [routerLink]="['/orders',order.orderid]" style="text-decoration: none;">
+        <div class="d-flex p-2 cart border shadow-sm p-3 mb-5 bg-white rounded">
+        <div class="id">
+            <b>Order no.: </b>{{order.orderid}}&nbsp;
+        </div>
+        <div class="date">
+            <b>Date: </b>{{order.date_of_order| date : 'mediumDate'}}&nbsp;
+        </div>
+        <div class="amount">
+            <b>Total payment: </b>{{order.total_payment | currency:'INR'}}
+        </div>
+        <br>
+    </div>
+</a>
+</div>
+
+</ng-container>

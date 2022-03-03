@@ -4,16 +4,17 @@ const router = express.Router();
 
 const order = require('./order.db');
 
+
   //Routing
 router.get('',function(req,res){
   res.send(`<h1>For Orders</h1>`);
 });
 /************
-      For Order processing
+      For Order processing - http://localhost:3000//api/user/orderpage
 ******************* */
 
 //get all orders
-router.get('/orders',order.getOrders);
+router.get('/orders', order.getOrders);
 
 //get particular order
 router.get('/orders/:id',order.getOrderByID);
@@ -31,16 +32,16 @@ router.get('/totalamount/:id',order.getTotalAmountByOrderId);
 router.post('/orders',order.insertOrder);
 
 //post orderlines for particular orderid
-router.post('/orderlines/:id',order.insertOrderline);
+router.post('/orderlines',order.insertOrderline);
 
 //put total amount in the order
-router.put('/totalamount/:id',order.updateOrderAmount);
+//router.put('/totalamount/:id',order.updateOrderAmount);
 
-//update orderline
-router.put('/orderlines/:id',order.updateOrderLine);
+// //update quantity of orderline
+// router.put('/orderlines/:id',verifyToken,order.updateOrderLine);
 
-//delete orderline
-router.delete('/orderlines/:id',order.deleteOrderLine);
+// //delete orderline
+// router.delete('/orderlines/:id',verifyToken,order.deleteOrderLine);
 
 //******************************************************************* */
 

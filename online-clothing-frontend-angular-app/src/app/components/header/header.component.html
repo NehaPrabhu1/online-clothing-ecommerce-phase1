@@ -1,0 +1,16 @@
+<div class="container">
+    <nav class="navbar navbar-light bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" routerLink="">Home</a>
+        <a class="navbar-brand" routerLink="/apparel">Apparel</a>
+        <a class="navbar-brand" routerLink="/orders">Orders</a>
+        <a routerLink="/cart">
+        <i class = " position-relative fa fa-shopping-cart" aria-hidden="true" style="font-size:30px">
+          <span class="cart position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size:16px">
+            {{itemInCart}}
+          </span>
+        </i>
+      </a>
+      </div>
+    </nav>
+    </div>
