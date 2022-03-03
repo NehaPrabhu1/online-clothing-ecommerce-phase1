@@ -28,7 +28,8 @@ export class ProductsService {
   }
 
   getProduct(id: string) {
-    return this.http.get<Product[]>(`${this.baseUrl}/products/${id}`, {observe: 'body', responseType: 'json'});
+    return this.http.get<Product[]>(`${this.baseUrl}/products/${id}`, {observe: 'body', responseType: 'json'})
+    .pipe(retry(1),catchError(this.handleError));
   }
 
   handleError(error: any) {
