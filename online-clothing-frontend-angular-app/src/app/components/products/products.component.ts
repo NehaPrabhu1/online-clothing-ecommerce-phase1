@@ -11,6 +11,7 @@ import { of } from 'rxjs';
 })
 export class ProductsComponent implements OnInit {
   products : Product[] = [];
+  gender:string = '';
   constructor(private productsService: ProductsService, public router: Router) {
   }
 

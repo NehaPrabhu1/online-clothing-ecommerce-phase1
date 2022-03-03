@@ -19,6 +19,8 @@ import { DeliveryaddressService } from './services/deliveryaddress.service';
 import { OrderService } from './services/order.service';
 import { ProductsService } from './services/products.service';
 import { FormsModule } from '@angular/forms';
+import { LoginComponent } from './components/login/login.component';
+import { ProductCategoryComponent } from './components/product-category/product-category.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,9 @@ import { FormsModule } from '@angular/forms';
     OrderComponent,
     OrdersComponent,
     HomeComponent,
-    DeliveryAddressComponent
+    DeliveryAddressComponent,
+    LoginComponent,
+    ProductCategoryComponent
   ],
   imports: [
     BrowserModule,

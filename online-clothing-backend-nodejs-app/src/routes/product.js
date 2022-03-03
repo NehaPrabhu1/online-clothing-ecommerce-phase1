@@ -22,4 +22,7 @@ router.get('/products/:id/reviews',products.getProductReviewsById);
 //General product search
 router.get('/search/products', products.searchProducts);
 
+//Get products by gender
+router.get('/products/gender/:gender',products.getProductsByGender);
+
 module.exports = router;

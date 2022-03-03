@@ -24,6 +24,17 @@ let pool = require('../db/connection');
       });
   }
 
+  function getProductsByGender(req,res){
+      const gender = req.params.gender;
+      pool.query('select * from products inner join categories using(categoryid) where categories.category_gender = $1',[gender],
+      (error,result)=>{
+          if(error){
+            return res.status(500).send("Internal Error on server");
+          }
+          return res.status(200).json(result.rows);
+      } )
+  }
+
   function filterProducts (req, res) {
     /* Filters json objects by given key values
     e.g. if the url is /products?brandid=2, all objects of brand 2 are returned
@@ -80,4 +91,4 @@ let pool = require('../db/connection');
 }
 
 
-module.exports = { getProductByID, getProductReviewsById, filterProducts, searchProducts }
+module.exports = { getProductByID, getProductReviewsById, filterProducts, searchProducts, getProductsByGender}

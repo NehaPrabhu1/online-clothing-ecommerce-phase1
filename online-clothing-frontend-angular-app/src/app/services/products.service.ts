@@ -28,6 +28,12 @@ export class ProductsService {
     return x;
   }
 
+  getProductsByGender(gender:string){
+    let x:Observable<Product[]>;
+    x = this.http.get<Product[]>("http://localhost:3000/api/clothing/auth/products/gender/"+gender);
+    return x;
+  }
+
   handleError(error: any) {
     let errorMessage = '';
     if (error.error instanceof ErrorEvent) {
