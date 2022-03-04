@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Order } from 'src/app/models/order';
+import { AuthService } from 'src/app/services/auth.service';
 import { OrderService } from 'src/app/services/order.service';
 
 @Component({
@@ -9,13 +10,16 @@ import { OrderService } from 'src/app/services/order.service';
 })
 export class OrdersComponent implements OnInit {
   order:OrderService;
-
   orders:Order[]= [];
-  constructor(order:OrderService) {
+  isloggedIn:boolean;
+  constructor(order:OrderService, private authService:AuthService) {
     this.order = order;
    }
 
   ngOnInit(): void {
+    this.isloggedIn= localStorage.getItem('status') ? true : false;
+    if(this.isloggedIn){
+      console.log(localStorage.getItem("id_token"));
     this.order.getAllOrders().
     subscribe((data)=>{
       this.orders = data;
@@ -24,6 +28,9 @@ export class OrdersComponent implements OnInit {
     (error)=>{console.log(error);},
     ()=>{console.log("no further data");})
    }
-  
+   else{
+     alert("Login First")
+   }
+  }
 
 }

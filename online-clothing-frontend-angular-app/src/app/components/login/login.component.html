@@ -1,19 +1,40 @@
-<div class="row">
-    <div class="col-5">
-        <div class="card border m-3">
-            <form>
-                <div class="m-3">
-                    <label for="exampleInputEmail1" class="form-label">Email address</label>
-                    <input type="email" class="form-control" id="emailid" aria-describedby="emailHelp">
-                </div>
-                <div class="m-3">
-                    <label for="exampleInputPassword1" class="form-label">Password</label>
-                    <input type="password" class="form-control" id="pass">
-                </div>
-                <div class="m-3">
-                    <button type="submit" class="btn btn-primary btn-block">Submit</button>
-                </div>
-            </form>
+<div class="container" *ngIf="!islogin">
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <div class="card my-3 cardbody-color">
+            <h2 class="text-center text-dark mt-2">User Login</h2>
+          <form class="card-body p-2" #authForm="ngForm" (ngSubmit)="onSubmit(authForm)">
+
+            <div class="text-center">
+              <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png" class="img-fluid profile-image-pic img-thumbnail rounded-circle my-3"
+                width="200px" alt="profile">
+            </div>
+
+            <div class="mb-3 mx-4">
+              <input type="email" class="form-control" id="Useremail" placeholder="User Email" 
+              name="email"
+              [(ngModel)] = "email"
+               required
+               email>
+            </div>
+            
+            <div class="mb-3 mx-4">
+              <input type="password" class="form-control" 
+              id="password" placeholder="Password"
+              name="password"
+              [(ngModel)] ="password"
+              required
+              password>
+            </div>
+            <div class="text-center"><button type="submit" class="btn btn-color px-5 mb-5 w-75">Login</button></div>
+            <div id="emailHelp" class="form-text text-center mb-5 text-dark">Not
+              Registered? <a href="#" class="text-dark fw-bold"> Create an
+                Account</a>
+            </div>
+          </form>
         </div>
+
+      </div>
     </div>
-</div>
+  </div>
+  

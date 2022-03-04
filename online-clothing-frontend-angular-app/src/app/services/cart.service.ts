@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { ProductSent } from '../models/productstobesent';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -8,13 +9,15 @@ import { ProductSent } from '../models/productstobesent';
 export class CartService {
 placeholder:any = [];
 cartItems = new BehaviorSubject([]);
-  constructor() { 
+isloggedIn:boolean;
+  constructor(private authService:AuthService) { 
     const ls = this.getCartData();
     if(ls) this.cartItems.next(ls);
   }
 
   addItem(product:ProductSent){
-    
+    this.isloggedIn= localStorage.getItem('status') ? true : false;
+    if(this.isloggedIn){
     const ls = this.getCartData();
 
     let exist:ProductSent | undefined= undefined;
@@ -39,6 +42,10 @@ cartItems = new BehaviorSubject([]);
     }
 
   }
+  else{
+    alert("Login First");
+  }
+}
   setCartData(data:any){
     localStorage.setItem('cart',JSON.stringify(data));
     this.cartItems.next(this.getCartData());

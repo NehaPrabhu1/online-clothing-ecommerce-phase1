@@ -4,14 +4,15 @@
         <a class="navbar-brand active" routerLink="">Home</a>
         <a class="navbar-brand" routerLink="/apparel">Apparel</a>
         <a class="navbar-brand" routerLink="/orders">Orders</a>
-        <a class="navbar-brand" routerLink="/login">Login</a>
-        <a routerLink="/cart">
+        <a *ngIf="islogin" routerLink="/cart">
         <i class = " position-relative fa fa-shopping-cart" aria-hidden="true" style="font-size:30px">
           <span class="cart position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size:16px">
             {{itemInCart}}
           </span>
         </i>
       </a>
+      <a *ngIf="!islogin" class="navbar-brand" [routerLink]="['login']">Login</a>
+      <button *ngIf="islogin" class="btn btn-danger text-white rounded" (click)="logout()">Logout</button>
       </div>
     </nav>
     </div>

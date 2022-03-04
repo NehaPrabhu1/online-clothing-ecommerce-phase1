@@ -6,6 +6,7 @@
 </div>
 
 <ng-container *ngIf="items.length >0">
+<br>
 <div class="row">
     <div class="col-9">
         <br>
@@ -14,7 +15,7 @@
         <i class="fa fa-trash text-danger" aria-hidden="true" (click) = "onDelete(i)"></i>
     
     <div class="imgBox">
-        <img src="{{item.productimage}}" alt="" class="img">
+        <img src="{{item.productimage}}"  alt="" class="img border">
     </div>
     <div class="name">
         {{item.productname}}
@@ -52,10 +53,11 @@
         </div>
         <div>
             <hr>
-            <button type="button" class="btn btn-primary btn-sm" (click)="onCheckout()">Check out</button>
+            <button type="button" class="btn btn-primary btn-sm w-100" (click)="onCheckout()">Check out</button>
         </div>
     </div>
 </div>
 </div>
+<br>
 </ng-container>
 

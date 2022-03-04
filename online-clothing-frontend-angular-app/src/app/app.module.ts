@@ -21,6 +21,7 @@ import { ProductsService } from './services/products.service';
 import { FormsModule } from '@angular/forms';
 import { LoginComponent } from './components/login/login.component';
 import { ProductCategoryComponent } from './components/product-category/product-category.component';
+import { AuthService } from './services/auth.service';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,7 @@ import { ProductCategoryComponent } from './components/product-category/product-
     FormsModule,
     HttpClientModule
   ],
-  providers: [CartService,CascadelistService,DeliveryaddressService,OrderService,ProductsService],
+  providers: [AuthService,CartService,CascadelistService,DeliveryaddressService,OrderService,ProductsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

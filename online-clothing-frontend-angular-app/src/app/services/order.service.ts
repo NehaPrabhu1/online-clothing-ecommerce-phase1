@@ -4,6 +4,7 @@ import { mergeMap, Observable } from 'rxjs';
 import { ProductSent } from '../models/productstobesent';
 import { Order } from '../models/order';
 import { Orderline } from '../models/orderline';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,7 @@ export class OrderService {
   orderid:Observable<any>;
   orderlineid:Observable<any>;
 
-  constructor(http:HttpClient) {
+  constructor(http:HttpClient, private authService:AuthService) {
     this.http = http;
    }
   //  public createOrderLines(orderid:number, orderlines:Product[],i:number){
@@ -50,14 +51,17 @@ export class OrderService {
    }
 
    public getAllOrders(){
+
      let x:Observable<Order[]>;
      x = this.http.get<Order[]>("http://localhost:3000/api/user/orderpage/orders");
     return x;
+
    }
 
    public getOrderLinesbyOrderid(id:number){
      let x:Observable<Orderline[]>;
      x = this.http.get<Orderline[]>("http://localhost:3000/api/user/orderpage/orderlines/"+id);
      return x;
-   }
+   
+  }
 }

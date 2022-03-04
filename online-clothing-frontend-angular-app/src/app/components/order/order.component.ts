@@ -4,6 +4,7 @@ import { Orderline } from 'src/app/models/orderline';
 import { OrderService } from 'src/app/services/order.service';
 import { DeliveryaddressService } from 'src/app/services/deliveryaddress.service';
 import { DeliveryAddress } from 'src/app/models/deliveryaddress';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-order',
@@ -16,12 +17,15 @@ export class OrderComponent implements OnInit {
   address:DeliveryaddressService;
   delAdd:DeliveryAddress[];
   orderlines:Orderline[];
-  constructor(order:OrderService, private route:ActivatedRoute,address:DeliveryaddressService) { 
+  isloggedIn:boolean;
+  constructor(private authService:AuthService,order:OrderService, private route:ActivatedRoute,address:DeliveryaddressService) { 
     this.order = order;
     this.address = address;
   }
 
   ngOnInit(): void {
+    this.isloggedIn= localStorage.getItem('status') ? true : false;
+    if(this.isloggedIn){
     const id = parseInt(this.route.snapshot.params['id']);
     this.order.getOrderLinesbyOrderid(id).
     subscribe((data)=>{this.orderlines = data;
@@ -34,5 +38,9 @@ export class OrderComponent implements OnInit {
     (error)=>{console.log("Error1 "+error)},
     ()=>{})
   }
+  else{
+    alert("Login First")
+  }
+}
 
 }
